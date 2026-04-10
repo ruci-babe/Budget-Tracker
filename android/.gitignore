@@ -1,0 +1,52 @@
+# Gradle files
+.gradle/
+build/
+*.gradle.bak
+
+# Android Studio
+.idea/
+*.iml
+*.iws
+*.ipr
+.cxx/
+
+# Local configuration file
+local.properties
+
+# Kotlin
+kotlin-js-store/
+
+# Build artifacts
+.DS_Store
+/captures
+.externalNativeBuild
+
+# ProGuard
+lint.xml
+lint-baseline.xml
+
+# Generated files
+bin/
+
+# APK Files
+*.apk
+*.aar
+*.ap_
+
+# Test reports
+test-results/
+
+# Compiled files
+*.class
+*.war
+*.ear
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environments
+venv/
+env/
+ENV/

@@ -1,0 +1,6 @@
+#!/home/rcollins/Documents/GitHub/Budget-Tracker/.venv/bin/python3
+import sys
+from PySimpleGUI.PySimpleGUI import main_watermark_off
+if __name__ == '__main__':
+    sys.argv[0] = sys.argv[0].removesuffix('.exe')
+    sys.exit(main_watermark_off())

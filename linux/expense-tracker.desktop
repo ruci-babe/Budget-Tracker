@@ -1,0 +1,12 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Expense Tracker
+Comment=Track receipts, scan emails, and manage spending
+Categories=Office;Finance;
+Exec=env PYTHONUNBUFFERED=1 python3 %INSTALL_PATH%/desktop_app.py
+Icon=document-properties
+Terminal=false
+StartupNotify=true
+Keywords=expenses;budget;tracker;receipts;
+X-GNOME-Keywords=expenses;budget;tracker;receipts;

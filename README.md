@@ -1,82 +1,241 @@
-# Expense Tracker
+# Expense Tracker 💩
 
-A simple expense tracker with uploads for monthly statements, receipts, and screenshots. It uses OCR for images/PDFs and automatically categorizes transactions.
+A multi-platform expense tracking application with mobile sync capabilities. Track receipts, scan emails, and manage spending across desktop (Linux, macOS, Windows) and mobile (Android) devices.
 
-## Features
-- Upload CSV, PDF, JPG, PNG, or TIFF files
-- Auto-extract transaction date, amount, and description
-- Automatic category suggestions with editable values
-- Monthly summary totals for money in and money spent
-- Category breakdown chart
-- Recurring transaction detection after 3 or more repeats
-- Editable transaction list for manual correction
-- Local persistence so transactions stay saved between sessions
-- Date-range, category, and search filters
-- Category manager for custom categories
-- OCR preview for image/PDF text extraction
+## ✨ Features
 
-## Setup
-1. Use the installer script (recommended):
+- 📱 **Multi-Platform**: Desktop (Linux, macOS, Windows) + Android mobile
+- 🔄 **Cloud Sync**: Sync expenses between devices in real-time
+- 📸 **Receipt Scanning**: OCR-powered receipt and email parsing
+- 🏷️ **Smart Categorization**: Automatic expense categorization with manual override
+- 📊 **Analytics**: Monthly summaries, category breakdowns, recurring expenses
+- 💾 **Offline Support**: Works offline, syncs when connected
+- 🎨 **Dark Mode**: Automatic light/dark theme detection on desktop
+- 🔐 **Secure**: JWT authentication, encrypted passwords
 
+## 📦 Project Structure
+
+```
+Budget-Tracker/
+├── linux/                 # 🐧 Linux Desktop App (Pop!_OS optimized)
+├── windows/              # 🪟 Windows Desktop App
+├── macos/               # 🍎 macOS Desktop App
+├── android/             # 📱 Android Mobile App
+├── backend/             # 🔗 Sync API Server
+├── app.py               # Streamlit web version (optional)
+├── requirements.txt     # Desktop dependencies
+└── docs/               # Documentation
+```
+
+## 🚀 Quick Start
+
+Choose your platform and follow the installation guide:
+
+### Linux (Pop!_OS/Ubuntu)
 ```bash
+cd linux
+chmod +x install.sh
 ./install.sh
 ```
+Then search for "Expense Tracker" in your applications menu.
 
-To install and launch the app immediately:
+**Features:**
+- ✅ GTK integration with automatic theme detection
+- ✅ Native application menu icon
+- ✅ Tesseract OCR for receipt scanning
 
+### Windows
 ```bash
-./install.sh --run
+cd windows
+install.bat
+```
+Then search for "Expense Tracker" in Start Menu or double-click `desktop_app.py`
+
+**Features:**
+- ✅ Start Menu integration
+- ✅ Easy Python setup with dependency checker
+- ✅ Tesseract OCR support (optional)
+
+### macOS
+```bash
+cd macos
+chmod +x install.sh
+./install.sh
+```
+Then open "Expense Tracker" from Applications folder.
+
+**Features:**
+- ✅ Native app bundle
+- ✅ Dark mode support
+- ✅ Automatic Homebrew dependency installation
+- ✅ Tesseract via Homebrew
+
+### Android (Coming Soon)
+See `android/README.md` for development setup.
+
+**Features:**
+- 📱 Add expenses on the go
+- 📸 Capture receipts with camera
+- 🔄 Auto-sync with desktop
+- 🏷️ Quick expense categorization
+
+## 🔗 Backend Sync Server
+
+The backend API enables syncing between devices. See `backend/README.md` for:
+- Installation and deployment
+- API documentation
+- Docker setup
+- Security considerations
+
+Quick start:
+```bash
+cd backend
+pip install -r requirements.txt
+cp .env.example .env
+python -c "from app import init_db; init_db()"
+python app.py
 ```
 
-This installs system dependencies, creates the virtual environment, installs Python packages, and then starts the app.
+## 📱 Features Overview
 
-If you prefer to do it manually, use:
+### Desktop Application
+- Upload CSV, PDF, JPG, PNG, or TIFF files
+- Auto-extract transaction date, amount, and description
+- Automatic category suggestions with manual override
+- Monthly summary totals for income and expenses
+- Category breakdown chart
+- Recurring transaction detection (3+ repeats)
+- Editable transaction list
+- Local persistence (no account required initially)
+- Date-range, category, and search filters
+- Manage custom categories
+- OCR preview for image/PDF text extraction
+- Email receipt integration (IMAP fetch & folder scan)
+- Theme-aware UI (light/dark mode on Pop!_OS)
+- Desktop icon in applications menu
 
+### Mobile App (Android - In Development)
+- Add expenses with photos
+- Real-time sync with desktop
+- Offline expense storage
+- Quick categorization
+- View spending summaries
+- Receipt capture with OCR
+- Synced categories from desktop
+
+## 🔄 Sync Workflow
+
+1. **Desktop First**: Create/manage expenses on desktop, app stores locally
+2. **Optional Sync**: Link account to sync with other devices
+3. **Mobile Add**: Add expenses on Android app while out
+4. **Auto-Sync**: Desktop automatically pulls new expenses when online
+5. **Conflict Resolution**: Last-write-wins strategy for simultaneous edits
+
+## 🛠️ Tech Stack
+
+### Desktop (All Platforms)
+- Python 3.8+
+- PySimpleGUI (cross-platform GUI)
+- Pandas (data processing)
+- Tesseract OCR (receipt scanning)
+- PyPDF, Pillow (file processing)
+
+### Backend
+- Flask (API server)
+- SQLAlchemy (ORM)
+- PostgreSQL/SQLite (database)
+- JWT (authentication)
+
+### Mobile (Android)
+- Kotlin
+- Jetpack Compose (UI)
+- Room (local database)
+- Retrofit (API client)
+- Hilt (dependency injection)
+
+## 📋 Installation Details per Platform
+
+For detailed setup instructions and troubleshooting, see:
+- [Linux Setup](linux/README.md)
+- [Windows Setup](windows/README.md)
+- [macOS Setup](macos/README.md)
+- [Backend Setup](backend/README.md)
+- [Android Setup](android/README.md)
+
+## 🔐 Offline & Sync
+
+The app works great standalone:
+- ✅ No account required to use desktop app
+- ✅ All data stored locally
+- ✅ OCR works on your machine
+- ✅ Email scanning local files
+
+To enable device sync:
+1. Start backend server (or use cloud deployment)
+2. Create account in desktop app settings
+3. Register your devices
+4. Enable sync - now all your devices stay updated!
+
+## 🐛 Building Standalone Executables
+
+### Linux
 ```bash
-python -m pip install --upgrade pip
-python -m pip install --extra-index-url https://PySimpleGUI.net/install -r requirements.txt
+cd linux
+./build.sh
+# Output: dist/desktop_app
 ```
 
-If PySimpleGUI still fails, run:
-
+### Windows
 ```bash
-python -m pip install --force-reinstall --extra-index-url https://PySimpleGUI.net/install PySimpleGUI
+cd windows
+.venv\Scripts\pyinstaller --onefile --windowed desktop_app.py
+# Output: dist\desktop_app.exe
 ```
 
-2. Install Tesseract OCR and tkinter:
-
-- On Linux:
-
+### macOS
 ```bash
-sudo apt update
-sudo apt install python3-tk tesseract-ocr libtesseract-dev
+cd macos
+pip install py2app
+python setup.py py2app
+# Output: dist/Expense Tracker.app
 ```
 
-- On Windows:
+## 📚 Documentation
 
-Install Tesseract from the official installer and make sure the install path is added to your PATH.
+- [Backend API Docs](backend/README.md)
+- [Linux Installation](linux/README.md)
+- [Windows Installation](windows/README.md)
+- [macOS Installation](macos/README.md)
+- [Android App](android/README.md)
 
-3. Run the desktop application:
+## 🤝 Contributing
 
-```bash
-python desktop_app.py
-```
+Contributions welcome! Areas of focus:
+- Android app development
+- Backend improvements
+- UI/UX enhancements
+- Test coverage
+- Documentation
 
-4. Optional: run the Streamlit version:
+## 📄 License
 
-```bash
-streamlit run app.py
-```
+See LICENSE file
 
-## Packaging for Windows
+## 🎯 Roadmap
 
-To build a standalone Windows executable from a Windows machine:
+- ✅ Multi-platform desktop support (Linux, Windows, macOS)
+- ✅ Backend sync infrastructure
+- 🚧 Android mobile app
+- 📋 iOS mobile app
+- 📋 Web dashboard
+- 📋 Advanced reporting
+- 📋 Budget alerts & notifications
+- 📋 Recurring transaction templates
+- 📋 Family/shared budgets
 
-```bash
-pyinstaller --onefile --windowed desktop_app.py
-```
+---
 
-## Packaging on Linux
+**Icon**: 💩 "Because everyone poops money away on random things!"
 
 To build a standalone Linux executable from this repository:
 

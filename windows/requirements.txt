@@ -1,0 +1,8 @@
+streamlit
+pandas
+pytesseract
+pillow
+pdfplumber
+python-dateutil
+PySimpleGUI
+pyinstaller
