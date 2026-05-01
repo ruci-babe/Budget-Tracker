@@ -63,8 +63,7 @@ The installer will:
 To create a .exe file for distribution:
 
 ```cmd
-.venv\Scripts\pip install pyinstaller
-.venv\Scripts\pyinstaller --onefile --windowed desktop_app.py
+build_windows.bat
 ```
 
 The .exe will be in `dist\desktop_app.exe`.

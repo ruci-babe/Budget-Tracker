@@ -55,6 +55,7 @@ Then search for "Expense Tracker" in Start Menu or double-click `desktop_app.py`
 - ✅ Start Menu integration
 - ✅ Easy Python setup with dependency checker
 - ✅ Tesseract OCR support (optional)
+- ✅ Optional standalone `.exe` build via `build_windows.bat`
 
 ### macOS
 ```bash
